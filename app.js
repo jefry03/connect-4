@@ -13,6 +13,14 @@ let win_state = false ;
 let tie = false ;
 let gameOver = false ;
 ////////////////////////////////////////////
+const squares = document.querySelectorAll('.sqr')
+const timersbutton = document.querySelectorAll('.timer-container')
+const restButton = document.querySelectorAll('#reset')
+const SetPlayerName = document.querySelectorAll ('#SetPlayerName')
+const playerName =document.querySelectorAll('#playerName')
+const boardElement = document.querySelectorAll('.board')
+///////////////////////////////////////////////////////////////
+
 
 
 
