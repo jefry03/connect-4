@@ -35,6 +35,18 @@ if ( !Number.isInteger(row) || !Number.isInteger(colmun) || row < 0 || row >= RO
 }
 return row * COLMUNS + colmun ;
 }
+function getAvalibleROW (colmun) {
+    if (!Number.isInteger(colmun) || colmun < 0 || colmun >= COLUMNS) {
+        return -1;
+    }
+    for ( let row =ROWS ; row >= 0 ; row --) {
+      if (board[getBoardIndex(row ,colmun)] === null) {
+        return row ;
+      }  
+    }
+ return -1
+}
+
 
 
 
