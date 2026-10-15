@@ -46,7 +46,10 @@ function getAvalibleROW (colmun) {
     }
  return -1
 }
-
+function switchPlayerTurn() {
+    if (gameOver) return;
+    currentPlayer = currentPlayer === PLAYERS.RED ? PLAYERS.YELLOW : PLAYERS.RED;
+}
 
 
 
