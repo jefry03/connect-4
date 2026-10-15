@@ -20,7 +20,15 @@ const SetPlayerName = document.querySelectorAll ('#SetPlayerName')
 const playerName =document.querySelectorAll('#playerName')
 const boardElement = document.querySelectorAll('.board')
 ///////////////////////////////////////////////////////////////
-
+function setPlayerName() {
+   const name = playerNameInput.value.trim();
+   if (!name) {
+       playerNameElement.textContent = 'player 1';
+       return ;
+   }
+   playerNameElement.textContent = name ;
+   playerNameInput.value ='';
+}
 
 
 
