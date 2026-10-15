@@ -29,6 +29,13 @@ function setPlayerName() {
    playerNameElement.textContent = name ;
    playerNameInput.value ='';
 }
+function getBoardIndex (row , colmun) {
+if ( !Number.isInteger(row) || !Number.isInteger(colmun) || row < 0 || row >= ROWS || colmun < 0 || colmun >= COLMUNS ) {
+    return -1
+}
+return row * COLMUNS + colmun ;
+}
+
 
 
 
