@@ -6,10 +6,18 @@ let board = [];
 let turn = 'RED';
 let winner = false;
 let tie = false;
+let players = {
+RED: 'Player 1 (Red)',
+YELLOW: 'Player 2 (Yellow)'
+};
 
 const squareEls = document.querySelectorAll('.sqr');
 const messageEl = document.querySelector('#message');
 const resetBtnEl = document.querySelector('#reset');
+const playerOne = document.querySelector ('#player1Input')
+const playerTwo = document.querySelector ('#player2Input')
+const setName = document.querySelector ('#setNameBtn')
+const nameSet = document.querySelector('#SetPlayerName')
 
 const winningCombos = [
     [0, 1, 2, 3], [1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5, 6],
@@ -32,7 +40,15 @@ const winningCombos = [
     [10, 16, 22, 28], [11, 17, 23, 29], [12, 18, 24, 30], [13, 19, 25, 31],
     [17, 23, 29, 35], [18, 24, 30, 36], [19, 25, 31, 37], [20, 26, 32, 38]
 ];
-
+function setNamePlayer () {
+    const playerOnename = player1Input ? player1Input.value.trim() : '' ;
+    const playerTwoname = player2Input ? player2Input.value.trim() : '' ;
+    if (playerOnename) players.RED = playerOnename
+    if (playerTwoname) players.YELLOW = playerTwoname
+    if (nameSet) {
+        nameSet.style.display ='none' ;
+    }
+}
 
 function init() {
     board = Array(BOARD_SIZE).fill('');
@@ -60,7 +76,7 @@ function updateMessage() {
     if (!messageEl) return;
 
     if (!winner && !tie) {
-        messageEl.textContent = `Player ${turn}'s turn`;
+        messageEl.textContent = `${players[turn]}'s turn`;
         return;
     }
 
@@ -69,7 +85,7 @@ function updateMessage() {
         return;
     }
 
-    messageEl.textContent = `Player ${turn} wins!`;
+    messageEl.textContent = `${players[turn]}'s turn`
 }
 
 function handleClick(index) {
@@ -121,6 +137,9 @@ squareEls.forEach((squareEl, index) => {
 
 if (resetBtnEl) {
 resetBtnEl.addEventListener('click', init);
+}
+if (setNameBtn) {
+    setNameBtn.addEventListener('click', setNamePlayer);
 }
 
 init();
