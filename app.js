@@ -74,7 +74,16 @@ function updateMessage() {
 
 function handleClick(index) {
     if (winner || tie || board[index] !== '') return;
-    board[index] = turn;
+    const col = index % 7 ;
+    let targetIndex = -1 ;
+    for (let i = col + 35 ; i>=0 ; i-=7){
+        if (board[i]==='') {
+            targetIndex = i ;
+            break ;
+        }
+    }
+    if (targetIndex!==-1)
+    board[targetIndex] = turn;
     checkForWinner();
     checkForTie();
 
