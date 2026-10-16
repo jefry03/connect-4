@@ -18,6 +18,22 @@
     cursor: pointer;
 }
 
-body{
-    background-color:gray;
+body {
+    background-color: gray;
 }
+
+.sqr.red {
+    background-color: red;
+    border-color: #990000;
+}
+
+.sqr.yellow {
+    background-color: yellow;
+    border-color: #999900;
+}
+
+.sqr.empty {
+    background-color: #ffffff;
+}
+    
+
