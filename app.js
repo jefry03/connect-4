@@ -7,16 +7,16 @@ let turn = 'RED';
 let winner = false;
 let tie = false;
 let players = {
-RED: 'Player 1 (Red)',
-YELLOW: 'Player 2 (Yellow)'
+    RED: 'Player 1 (Red)',
+    YELLOW: 'Player 2 (Yellow)'
 };
 
 const squareEls = document.querySelectorAll('.sqr');
 const messageEl = document.querySelector('#message');
 const resetBtnEl = document.querySelector('#reset');
-const playerOne = document.querySelector ('#player1Input')
-const playerTwo = document.querySelector ('#player2Input')
-const setName = document.querySelector ('#setNameBtn')
+const playerOne = document.querySelector('#player1Input')
+const playerTwo = document.querySelector('#player2Input')
+const setName = document.querySelector('#setNameBtn')
 const nameSet = document.querySelector('#SetPlayerName')
 
 const winningCombos = [
@@ -40,14 +40,15 @@ const winningCombos = [
     [10, 16, 22, 28], [11, 17, 23, 29], [12, 18, 24, 30], [13, 19, 25, 31],
     [17, 23, 29, 35], [18, 24, 30, 36], [19, 25, 31, 37], [20, 26, 32, 38]
 ];
-function setNamePlayer () {
-    const playerOnename = player1Input ? player1Input.value.trim() : '' ;
-    const playerTwoname = player2Input ? player2Input.value.trim() : '' ;
+function setNamePlayer() {
+    const playerOnename = playerOne ? playerOne.value.trim() : '';
+    const playerTwoname = playerTwo ? playerTwo.value.trim() : '';
     if (playerOnename) players.RED = playerOnename
     if (playerTwoname) players.YELLOW = playerTwoname
     if (nameSet) {
-        nameSet.style.display ='none' ;
+        nameSet.style.display = 'none';
     }
+    render();
 }
 
 function init() {
@@ -55,7 +56,17 @@ function init() {
     turn = 'RED';
     winner = false;
     tie = false;
-    render();
+    
+    players = {
+        RED: 'Player 1 (Red)',
+        YELLOW: 'Player 2 (Yellow)'
+    };
+    if (playerOne) playerOne.value = '';
+    if (playerTwo) playerTwo.value = '' ;
+    if (nameSet) {
+        nameSet.style.display = 'block';
+}
+render();
 }
 
 function render() {
@@ -85,21 +96,21 @@ function updateMessage() {
         return;
     }
 
-    messageEl.textContent = `${players[turn]}'s turn`
+    messageEl.textContent = `${players[turn]}' wins `
 }
 
 function handleClick(index) {
     if (winner || tie || board[index] !== '') return;
-    const col = index % 7 ;
-    let targetIndex = -1 ;
-    for (let i = col + 35 ; i>=0 ; i-=7){
-        if (board[i]==='') {
-            targetIndex = i ;
-            break ;
+    const col = index % 7;
+    let targetIndex = -1;
+    for (let i = col + 35; i >= 0; i -= 7) {
+        if (board[i] === '') {
+            targetIndex = i;
+            break;
         }
     }
-    if (targetIndex!==-1)
-    board[targetIndex] = turn;
+    if (targetIndex !== -1)
+        board[targetIndex] = turn;
     checkForWinner();
     checkForTie();
 
@@ -136,10 +147,10 @@ squareEls.forEach((squareEl, index) => {
 });
 
 if (resetBtnEl) {
-resetBtnEl.addEventListener('click', init);
+    resetBtnEl.addEventListener('click', init);
 }
-if (setNameBtn) {
-    setNameBtn.addEventListener('click', setNamePlayer);
+if (setName) {
+    setName.addEventListener('click', setNamePlayer);
 }
 
 init();
