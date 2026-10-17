@@ -92,8 +92,14 @@ function stopTimer() {
 
 function updateTime() {
     if (timerToPlayers) {
-        timerToPlayers.textContent = `Time remaining: ${timeStart}s`;
-    }
+        timerToPlayers.textContent = ` ⏱️Time remaining: ${timeStart}s`;
+        if (timeStart <=5 && timeStart> 0 ){
+            timerToPlayers.classList.add('warning') ;
+
+        } else {
+            timerToPlayers.classList.remove('warning')
+        }
+    } 
 }
 
 function init() {
