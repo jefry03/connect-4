@@ -1,7 +1,7 @@
 const ROWS = 6;
 const COLUMNS = 7;
 const BOARD_SIZE = ROWS * COLUMNS;
-
+const time = 20
 let board = [];
 let turn = 'RED';
 let winner = false;
@@ -10,7 +10,8 @@ let players = {
     RED: 'Player 1 (Red)',
     YELLOW: 'Player 2 (Yellow)'
 };
-
+let timerInit =null ;
+let timeStart = time ;
 const squareEls = document.querySelectorAll('.sqr');
 const messageEl = document.querySelector('#message');
 const resetBtnEl = document.querySelector('#reset');
@@ -18,7 +19,7 @@ const playerOne = document.querySelector('#player1Input')
 const playerTwo = document.querySelector('#player2Input')
 const setName = document.querySelector('#setNameBtn')
 const nameSet = document.querySelector('#SetPlayerName')
-
+const timerToPlayers = document.querySelector('#timer')
 const winningCombos = [
     [0, 1, 2, 3], [1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5, 6],
     [7, 8, 9, 10], [8, 9, 10, 11], [9, 10, 11, 12], [10, 11, 12, 13],
@@ -43,30 +44,79 @@ const winningCombos = [
 function setNamePlayer() {
     const playerOnename = playerOne ? playerOne.value.trim() : '';
     const playerTwoname = playerTwo ? playerTwo.value.trim() : '';
-    if (playerOnename) players.RED = playerOnename
-    if (playerTwoname) players.YELLOW = playerTwoname
+    if (playerOnename) players.RED = playerOnename;
+    if (playerTwoname) players.YELLOW = playerTwoname;
+
     if (nameSet) {
         nameSet.style.display = 'none';
     }
+
     render();
+    if (!winner && !tie) {
+        startTimer();
+    }
+}
+
+function startTimer() {
+    if (winner || tie) 
+    return;
+stopTimer() ;
+    timeStart = time;
+    updateTime();
+
+    timerInit = setInterval(() => {
+        if (winner || tie) {
+            stopTimer();
+            return;
+        }
+
+        timeStart--;
+        updateTime();
+        if (timeStart <= 0) {
+            stopTimer();
+            switchPlayerTurn();
+            render();
+            startTimer();
+        }
+    }, 1000);
+}
+
+function stopTimer() {
+    if (timerInit !== null) {
+        clearInterval(timerInit);
+        timerInit = null;
+    }
+}
+
+function updateTime() {
+    if (timerToPlayers) {
+        timerToPlayers.textContent = `Time remaining: ${timeStart}s`;
+    }
 }
 
 function init() {
+    stopTimer();
     board = Array(BOARD_SIZE).fill('');
     turn = 'RED';
     winner = false;
     tie = false;
-    
+    timeStart = time ;
+
     players = {
         RED: 'Player 1 (Red)',
         YELLOW: 'Player 2 (Yellow)'
     };
+
     if (playerOne) playerOne.value = '';
-    if (playerTwo) playerTwo.value = '' ;
+    if (playerTwo) playerTwo.value = '';
     if (nameSet) {
         nameSet.style.display = 'block';
-}
-render();
+    }
+
+    timeStart = time;
+    render();
+    updateTime ();
+    
 }
 
 function render() {
@@ -93,32 +143,42 @@ function updateMessage() {
 
     if (tie) {
         messageEl.textContent = "It's a tie!";
+        stopTimer();
         return;
     }
 
-    messageEl.textContent = `${players[turn]}' wins `
+    messageEl.textContent = `${players[turn]}'s wins`;
+    stopTimer();
 }
 
 function handleClick(index) {
     if (winner || tie || board[index] !== '') return;
+
     const col = index % 7;
     let targetIndex = -1;
+
     for (let i = col + 35; i >= 0; i -= 7) {
         if (board[i] === '') {
             targetIndex = i;
             break;
         }
     }
-    if (targetIndex !== -1)
+
+    if (targetIndex !== -1) {
         board[targetIndex] = turn;
+    }
+
     checkForWinner();
     checkForTie();
 
     if (!winner && !tie) {
         switchPlayerTurn();
+        render();
+        startTimer();
+    } else {
+        stopTimer();
+        render();
     }
-
-    render();
 }
 
 function checkForWinner() {
