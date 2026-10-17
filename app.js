@@ -55,11 +55,24 @@ function setNamePlayer() {
     if (nameSet) {
         nameSet.style.display = 'none';
     }
-    gameStart= true ;
-    render();
-    if (!winner && !tie) {
-        startTimer();
+    let countDown = 3;
+    if (messageEl) {
+        messageEl.textContent = countDown;
     }
+
+    const countDownInterval = setInterval(() => {
+        countDown--;
+        if (countDown > 0) {
+            if (messageEl) messageEl.textContent = countDown;
+        } else {
+            clearInterval(countDownInterval);
+            gameStart = true;
+            render();
+            if (!winner && !tie) {
+                startTimer();
+            }
+        }
+    }, 1000);
 }
 
 function startTimer() {
