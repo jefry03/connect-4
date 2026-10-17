@@ -25,6 +25,9 @@ const playerTwo = document.querySelector('#player2Input')
 const setName = document.querySelector('#setNameBtn')
 const nameSet = document.querySelector('#SetPlayerName')
 const timerToPlayers = document.querySelector('#timer')
+const playersDisplayEl = document.querySelector('#playersDisplay');
+const p1DisplayEl = document.querySelector('#p1Display');
+const p2DisplayEl = document.querySelector('#p2Display');
 const winningCombos = [
     [0, 1, 2, 3], [1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5, 6],
     [7, 8, 9, 10], [8, 9, 10, 11], [9, 10, 11, 12], [10, 11, 12, 13],
@@ -52,9 +55,10 @@ function setNamePlayer() {
     if (playerOnename) players.RED = playerOnename;
     if (playerTwoname) players.YELLOW = playerTwoname;
 
-    if (nameSet) {
-        nameSet.style.display = 'none';
-    }
+    if (nameSet) nameSet.style.display = 'none';
+    if (playersDisplayEl) playersDisplayEl.style.display = 'flex';
+    if (p1DisplayEl) p1DisplayEl.textContent = `🔴 ${players.RED}`;
+    if (p2DisplayEl) p2DisplayEl.textContent = `🟡 ${players.YELLOW}`;
     let countDown = 3;
     if (messageEl) {
         messageEl.textContent = countDown;
@@ -145,16 +149,43 @@ function init() {
     if (nameSet) {
         nameSet.style.display = 'block';
     }
-
+    if (playersDisplayEl) playersDisplayEl.style.display ='none';
     timeStart = time;
     render();
     updateTime ();
     
 }
+function updateActivePlayer () {
+    if (!p1DisplayEl || !p2DisplayEl) return ;
+    if (winner) {
+    if (turn === 'RED' ) {
+        p1DisplayEl.classList.add('active-player');
+        p2DisplayEl.classList.remove('active-player');
+    } else if (turn === 'YELLOW' ) {
+        p2DisplayEl.classList.add('active-player');
+        p1DisplayEl.classList.remove('active-player');
+} else {
+    p1DisplayEl.classList.remove('active-player');
+    p2DisplayEl.classList.remove('active-player');
+}
+return ;
+}
+    if (turn === 'RED' && gameStart && !tie) {
+        p1DisplayEl.classList.add('active-player');
+        p2DisplayEl.classList.remove('active-player');
+    } else if (turn === 'YELLOW' && gameStart && !tie) {
+        p2DisplayEl.classList.add('active-player');
+        p1DisplayEl.classList.remove('active-player');
+} else {
+    p1DisplayEl.classList.remove('active-player');
+    p2DisplayEl.classList.remove('active-player');
+}
+}
 
 function render() {
     updateBoard();
     updateMessage();
+    updateActivePlayer ();
 }
 
 function updateBoard() {
@@ -182,7 +213,7 @@ function updateMessage() {
     if (!messageEl) return;
 
     if (!winner && !tie) {
-        messageEl.textContent = `${players[turn]}'s turn`;
+        messageEl.textContent = "";
         return;
     }
 

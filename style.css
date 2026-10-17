@@ -133,3 +133,47 @@ button{
    box-shadow: 0 4px 15px black;
    margin : 15px auto ;
 }
+.players-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    margin: 15px 0;
+}
+
+.player-card {
+    padding: 12px 24px;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffffff;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    opacity: 0.6; 
+}
+.active-player {
+    opacity: 1 !important;
+    animation: turnPulse 1s infinite alternate ease-in-out;
+}
+
+.p1-card.active-player {
+    border-color: crimson;
+    background-color: rgba(220, 20, 60, 0.25);
+}
+
+.p2-card.active-player {
+    border-color: gold;
+    background-color: rgba(255, 215, 0, 0.25);
+}
+
+@keyframes turnPulse {
+    from {
+        transform: scale(1.05);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    }
+    to {
+        transform: scale(1.2); 
+        box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+    }
+}
