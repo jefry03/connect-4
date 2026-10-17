@@ -10,10 +10,12 @@ let tie = false;
 let players = {
     RED: 'Player 1 (Red)',
     YELLOW: 'Player 2 (Yellow)'
+
 };
 let timerInit =null ;
 let timeStart = time ;
 let winningCoins = [];
+let gameStart = false ;
 const squareEls = document.querySelectorAll('.sqr');
 const messageEl = document.querySelector('#message');
 const resetBtnEl = document.querySelector('#reset');
@@ -52,8 +54,9 @@ function setNamePlayer() {
     if (nameSet) {
         nameSet.style.display = 'none';
     }
-
+    gameStart() = true ;
     render();
+    startTimer() ;
     if (!winner && !tie) {
         startTimer();
     }
@@ -109,6 +112,7 @@ function init() {
     winner = false;
     tie = false;
     timeStart = time ;
+    gameStart = false ;
 
     players = {
         RED: 'Player 1 (Red)',
@@ -172,7 +176,7 @@ function updateMessage() {
 }
 
 function handleClick(index) {
-    if (winner || tie || board[index] !== '') return;
+    if (!gameStart || winner || tie || board[index] !== '') return;
 
     const col = index % 7;
     let targetIndex = -1;
