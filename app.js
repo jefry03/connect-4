@@ -127,8 +127,15 @@ function render() {
 function updateBoard() {
     board.forEach((cell, index) => {
         if (squareEls[index]) {
+            const rowIndex=Math.floor(index/7)
+            
             squareEls[index].classList.toggle('red', cell === 'RED');
             squareEls[index].classList.toggle('yellow', cell === 'YELLOW');
+            if (cell !== '') {
+                squareEls[index].classList.add(`row-${rowIndex}`) ;
+            } else {
+               squareEls[index].classList.remove('row-0', 'row-1', 'row-2', 'row-3', 'row-4', 'row-5') ; 
+            }
         }
     });
 }
