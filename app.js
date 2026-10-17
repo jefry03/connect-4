@@ -12,6 +12,7 @@ let players = {
 };
 let timerInit =null ;
 let timeStart = time ;
+let winningCoins = [];
 const squareEls = document.querySelectorAll('.sqr');
 const messageEl = document.querySelector('#message');
 const resetBtnEl = document.querySelector('#reset');
@@ -131,6 +132,11 @@ function updateBoard() {
             
             squareEls[index].classList.toggle('red', cell === 'RED');
             squareEls[index].classList.toggle('yellow', cell === 'YELLOW');
+            if (winner && winningCoins.includes(index)) {
+                squareEls[index].classList.add('winning-coin') 
+            } else {
+                squareEls[index].classList.remove('winning-coin')
+            }
             if (cell !== '') {
                 squareEls[index].classList.add(`row-${rowIndex}`) ;
             } else {
@@ -193,6 +199,7 @@ function checkForWinner() {
         const [a, b, c, d] = combo;
         if (board[a] !== '' && board[a] === board[b] && board[a] === board[c] && board[a] === board[d]) {
             winner = true;
+            winningCoins = combo ;
         }
     });
 }
