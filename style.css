@@ -18,6 +18,7 @@
     box-shadow:inset 0 4px 6px grey  ;
     border: 2px solid navy;
     cursor: pointer;
+    position: relative;
 }
 
 body {
@@ -29,13 +30,21 @@ body {
     flex-direction: column;
     align-items: center;
 }
+.sqr.red::after , .sqr.yellow::after{
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 50% ;
+    border : 2px solid ;
+    box-sizing: border-box;
+}
 
-.sqr.red {
+.sqr.red::after {
     background-color: crimson;
     border-color: darkred;
 }
 
-.sqr.yellow {
+.sqr.yellow::after {
     background-color: gold;
     border-color: #999900;
 }
@@ -49,12 +58,12 @@ body {
 @keyframes drop-row-3 { from { transform: translateY(-296px); } }
 @keyframes drop-row-4 { from { transform: translateY(-370px) ;} }
 @keyframes drop-row-5 { from { transform: translateY(-444px); } }
-.row-0 { animation: drop-row-0 0.35s ease-in; }
-.row-1 { animation: drop-row-1 0.35s ease-in; }
-.row-2 { animation: drop-row-2 0.35s ease-in; }
-.row-3 { animation: drop-row-3 0.35s ease-in; }
-.row-4 { animation: drop-row-4 0.35s ease-in; }
-.row-5 { animation: drop-row-5 0.35s ease-in; }
+.row-0::after { animation: drop-row-0 0.35s ease-in; }
+.row-1::after{ animation: drop-row-1 0.35s ease-in; }
+.row-2::after{ animation: drop-row-2 0.35s ease-in; }
+.row-3::after { animation: drop-row-3 0.35s ease-in; }
+.row-4::after { animation: drop-row-4 0.35s ease-in; }
+.row-5::after{ animation: drop-row-5 0.35s ease-in; }
 
 input {
     padding :8px 12px ;
