@@ -3,6 +3,7 @@ const COLUMNS = 7;
 const BOARD_SIZE = ROWS * COLUMNS;
 const time = 20
 const dropCoin = new Audio ('drop2.mp3');
+const timerClock = new Audio('timer2.mp3')
 let board = [];
 let turn = 'RED';
 let winner = false;
@@ -54,20 +55,23 @@ function setNamePlayer() {
     if (nameSet) {
         nameSet.style.display = 'none';
     }
-    gameStart() = true ;
+    gameStart= true ;
     render();
-    startTimer() ;
     if (!winner && !tie) {
         startTimer();
     }
 }
 
 function startTimer() {
-    if (winner || tie) 
+    if (!gameStart || winner || tie) 
     return;
 stopTimer() ;
     timeStart = time;
     updateTime();
+    if (timerClock) {
+        timerClock.currentTime = 0 ;
+        timerClock.play();
+    }
 
     timerInit = setInterval(() => {
         if (winner || tie) {
@@ -90,6 +94,10 @@ function stopTimer() {
     if (timerInit !== null) {
         clearInterval(timerInit);
         timerInit = null;
+    }
+    if (timerClock) {
+        timerClock.pause();
+        timerClock.currentTime = 0;
     }
 }
 
