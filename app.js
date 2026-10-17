@@ -2,6 +2,7 @@ const ROWS = 6;
 const COLUMNS = 7;
 const BOARD_SIZE = ROWS * COLUMNS;
 const time = 20
+const dropCoin = new Audio ('drop2.mp3');
 let board = [];
 let turn = 'RED';
 let winner = false;
@@ -178,6 +179,10 @@ function handleClick(index) {
     }
 
     if (targetIndex !== -1) {
+        if (dropCoin) {
+            dropCoin.currentTime= 0 ;
+            dropCoin.play() ;
+        }
         board[targetIndex] = turn;
     }
 
