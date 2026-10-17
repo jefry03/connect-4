@@ -35,5 +35,16 @@ body {
 .sqr.empty {
     background-color: #ffffff;
 }
-    
+@keyframes drop-row-0 { from { transform: translateY(-74px); } }
+@keyframes drop-row-1 { from { transform: translateY(-148px); } }
+@keyframes drop-row-2 { from { transform: translateY(-222px); } }
+@keyframes drop-row-3 { from { transform: translateY(-296px); } }
+@keyframes drop-row-4 { from { transform: translateY(-370px) ;} }
+@keyframes drop-row-5 { from { transform: translateY(-444px); } }
+.row-0 { animation: drop-row-0 0.35s ease-in; }
+.row-1 { animation: drop-row-1 0.35s ease-in; }
+.row-2 { animation: drop-row-2 0.35s ease-in; }
+.row-3 { animation: drop-row-3 0.35s ease-in; }
+.row-4 { animation: drop-row-4 0.35s ease-in; }
+.row-5 { animation: drop-row-5 0.35s ease-in; }
 
