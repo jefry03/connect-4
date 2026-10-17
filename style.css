@@ -73,3 +73,17 @@ button{
     font-size: 16px;
     cursor: pointer;
 }
+@keyframes winCoins {
+    from 
+    {
+     transform: scale(1);
+     box-shadow : 0 0 10px 3px grey  
+    }
+    to {
+        transform: scale(1.08);
+        box-shadow: 0 0 22px 8px whitesmoke
+    }
+}
+.sqr.winning-coin {
+   animation: winCoins 0.8s infinite alternate ease-in-out ; 
+}
