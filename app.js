@@ -6,6 +6,7 @@ const dropCoin = new Audio ('drop2.mp3');
 const timerClock = new Audio('timer2.mp3')
 const victory = new Audio ('victory.mp3')
 const counter = new Audio ('counter.mp3')
+const  click = new Audio ('click.mp3')
 let board = [];
 let turn = 'RED';
 let winner = false;
@@ -52,6 +53,10 @@ const winningCombos = [
     [17, 23, 29, 35], [18, 24, 30, 36], [19, 25, 31, 37], [20, 26, 32, 38]
 ];
 function setNamePlayer() {
+    if (click) {
+    click.currentTime =1 ;
+    click.play();
+    }
     const playerOnename = playerOne ? playerOne.value.trim() : '';
     const playerTwoname = playerTwo ? playerTwo.value.trim() : '';
     if (playerOnename) players.RED = playerOnename;
@@ -64,6 +69,7 @@ function setNamePlayer() {
     let countDown = 3;
     if (messageEl) {
         messageEl.textContent = countDown;
+        messageEl.classList.add('warning-countdown')
     }
 
     const countDownInterval = setInterval(() => {
@@ -72,7 +78,6 @@ function setNamePlayer() {
             counter.currentTime = 2 ;
             counter.play();
             if (messageEl) 
-                messageEl.classList.add('warning-countdown')
                 messageEl.textContent = countDown;
                
         } else {
@@ -140,6 +145,8 @@ function updateTime() {
 
 function init() {
     stopTimer();
+    victory.currentTime = 0 ;
+    victory.pause();
     board = Array(BOARD_SIZE).fill('');
     turn = 'RED';
     winner = false;
@@ -306,5 +313,5 @@ if (resetBtnEl) {
 if (setName) {
     setName.addEventListener('click', setNamePlayer);
 }
-
+   
 init();

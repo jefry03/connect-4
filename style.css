@@ -195,9 +195,9 @@ button{
 }
 
 .warning-countdown {
-    background: darkred;
+    background: black;
     border-color: red;
-    color : palevioletred ;
+    color : white;
     animation : timer-pulse 0.6s infinite alternate ;
     text-align: center;
 }
