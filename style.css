@@ -29,6 +29,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-image: url(background.jpg) ;
 }
 .sqr.red::after , .sqr.yellow::after{
     content: "";
@@ -178,4 +179,25 @@ button{
         transform: scale(1.2); 
         box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
     }
+}
+.win-message {
+    padding: 12px 24px;
+    border-radius: 12px;
+    background-color: orangered;
+    border: 2px solid #ffffffe0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffffff;
+    animation: turnPulse 1s infinite alternate ease-in-out;
+    opacity: 0.6; 
+    align-items: center;
+    text-align: center;
+}
+
+.warning-countdown {
+    background: darkred;
+    border-color: red;
+    color : palevioletred ;
+    animation : timer-pulse 0.6s infinite alternate ;
+    text-align: center;
 }

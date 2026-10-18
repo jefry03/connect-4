@@ -5,6 +5,7 @@ const time = 20
 const dropCoin = new Audio ('drop2.mp3');
 const timerClock = new Audio('timer2.mp3')
 const victory = new Audio ('victory.mp3')
+const counter = new Audio ('counter.mp3')
 let board = [];
 let turn = 'RED';
 let winner = false;
@@ -67,9 +68,15 @@ function setNamePlayer() {
 
     const countDownInterval = setInterval(() => {
         countDown--;
-        if (countDown > 0) {
-            if (messageEl) messageEl.textContent = countDown;
+        if (countDown > 0 ) {
+            counter.currentTime = 0 ;
+            counter.play();
+            if (messageEl) 
+                messageEl.classList.add('warning-countdown')
+                messageEl.textContent = countDown;
+               
         } else {
+            messageEl.classList.remove('warning-countdown')
             clearInterval(countDownInterval);
             gameStart = true;
             render();
@@ -194,7 +201,6 @@ function updateBoard() {
     board.forEach((cell, index) => {
         if (squareEls[index]) {
             const rowIndex=Math.floor(index/7)
-            
             squareEls[index].classList.toggle('red', cell === 'RED');
             squareEls[index].classList.toggle('yellow', cell === 'YELLOW');
             if (winner && winningCoins.includes(index)) {
@@ -216,16 +222,17 @@ function updateMessage() {
 
     if (!winner && !tie) {
         messageEl.textContent = "";
+        messageEl.classList.remove('win-message')
         return;
     }
-
+      messageEl.classList.add('win-message')
     if (tie) {
-        messageEl.textContent = "It's a tie!";
+        messageEl.textContent = "👏🏻 It's a tie! 👏🏻 ";
         stopTimer();
         return;
     }
 
-    messageEl.textContent = `${players[turn]}'s wins`;
+    messageEl.textContent = `🎉   ${players[turn]} wins 🎉`;
     stopTimer();
 }
 
