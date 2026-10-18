@@ -71,6 +71,7 @@ input {
     border : 2px solid navy ;
     border-radius: 8px;
     font-size: 16px;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 button{
     padding: 10px 20px;
@@ -81,6 +82,7 @@ button{
     border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 @keyframes winCoins {
     from 
@@ -153,7 +155,7 @@ button{
     opacity: 0.6; 
 }
 .active-player {
-    opacity: 1 !important;
+    opacity: 1 ;
     animation: turnPulse 1s infinite alternate ease-in-out;
 }
 

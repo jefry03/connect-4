@@ -4,6 +4,7 @@ const BOARD_SIZE = ROWS * COLUMNS;
 const time = 20
 const dropCoin = new Audio ('drop2.mp3');
 const timerClock = new Audio('timer2.mp3')
+const victory = new Audio ('victory.mp3')
 let board = [];
 let turn = 'RED';
 let winner = false;
@@ -151,6 +152,7 @@ function init() {
     }
     if (playersDisplayEl) playersDisplayEl.style.display ='none';
     timeStart = time;
+
     render();
     updateTime ();
     
@@ -247,7 +249,6 @@ function handleClick(index) {
         }
         board[targetIndex] = turn;
     }
-
     checkForWinner();
     checkForTie();
 
@@ -257,6 +258,10 @@ function handleClick(index) {
         startTimer();
     } else {
         stopTimer();
+        if (winner && victory) {
+            victory.currentTime = 0 ;
+            victory.play();
+        }
         render();
     }
 }
@@ -268,6 +273,7 @@ function checkForWinner() {
             winner = true;
             winningCoins = combo ;
         }
+
     });
 }
 
