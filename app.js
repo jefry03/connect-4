@@ -68,8 +68,8 @@ function setNamePlayer() {
 
     const countDownInterval = setInterval(() => {
         countDown--;
-        if (countDown > 0 ) {
-            counter.currentTime = 0 ;
+        if (countDown > 0) {
+            counter.currentTime = 2 ;
             counter.play();
             if (messageEl) 
                 messageEl.classList.add('warning-countdown')
