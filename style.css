@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: repeat(7, 60px);
     gap: 10px;
-    background-color:royalblue;
+    background-color: royalblue;
     box-shadow: 0 10px black;
     padding: 15px;
     border-radius: 10px;
@@ -15,7 +15,7 @@
     height: 60px;
     background-color: #ffffff;
     border-radius: 50%;
-    box-shadow:inset 0 4px 6px grey  ;
+    box-shadow: inset 0 4px 6px grey;
     border: 2px solid navy;
     cursor: pointer;
     position: relative;
@@ -24,19 +24,21 @@
 body {
     background-color: #0f1b3d;
     color: white;
-    margin :0 ;
-    padding: 20px; 
+    margin: 0;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url(background.jpg) ;
+    background-image: url(background.jpg);
 }
-.sqr.red::after , .sqr.yellow::after{
+
+.sqr.red::after,
+.sqr.yellow::after {
     content: "";
     position: absolute;
     inset: -2px;
-    border-radius: 50% ;
-    border : 2px solid ;
+    border-radius: 50%;
+    border: 2px solid;
     box-sizing: border-box;
 }
 
@@ -53,89 +55,151 @@ body {
 .sqr.empty {
     background-color: #ffffff;
 }
-@keyframes drop-row-0 { from { transform: translateY(-74px); } }
-@keyframes drop-row-1 { from { transform: translateY(-148px); } }
-@keyframes drop-row-2 { from { transform: translateY(-222px); } }
-@keyframes drop-row-3 { from { transform: translateY(-296px); } }
-@keyframes drop-row-4 { from { transform: translateY(-370px) ;} }
-@keyframes drop-row-5 { from { transform: translateY(-444px); } }
-.row-0::after { animation: drop-row-0 0.35s ease-in; }
-.row-1::after{ animation: drop-row-1 0.35s ease-in; }
-.row-2::after{ animation: drop-row-2 0.35s ease-in; }
-.row-3::after { animation: drop-row-3 0.35s ease-in; }
-.row-4::after { animation: drop-row-4 0.35s ease-in; }
-.row-5::after{ animation: drop-row-5 0.35s ease-in; }
+
+@keyframes drop-row-0 {
+    from {
+        transform: translateY(-74px);
+    }
+}
+
+@keyframes drop-row-1 {
+    from {
+        transform: translateY(-148px);
+    }
+}
+
+@keyframes drop-row-2 {
+    from {
+        transform: translateY(-222px);
+    }
+}
+
+@keyframes drop-row-3 {
+    from {
+        transform: translateY(-296px);
+    }
+}
+
+@keyframes drop-row-4 {
+    from {
+        transform: translateY(-370px);
+    }
+}
+
+@keyframes drop-row-5 {
+    from {
+        transform: translateY(-444px);
+    }
+}
+
+.row-0::after {
+    animation: drop-row-0 0.35s ease-in;
+}
+
+.row-1::after {
+    animation: drop-row-1 0.35s ease-in;
+}
+
+.row-2::after {
+    animation: drop-row-2 0.35s ease-in;
+}
+
+.row-3::after {
+    animation: drop-row-3 0.35s ease-in;
+}
+
+.row-4::after {
+    animation: drop-row-4 0.35s ease-in;
+}
+
+.row-5::after {
+    animation: drop-row-5 0.35s ease-in;
+}
 
 input {
-    padding :8px 12px ;
-    margin : 5px ;
-    border : 2px solid navy ;
+    padding: 8px 12px;
+    margin: 5px;
+    border: 2px solid navy;
     border-radius: 8px;
     font-size: 16px;
-     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-button{
+
+button {
     padding: 10px 20px;
-    margin :5px ;
+    margin: 5px;
     background-color: royalblue;
-    color:#ffffff;
-    border : none ;
+    color: #ffffff;
+    border: none;
     border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
-     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 @keyframes winCoins {
-    from 
-    {
-     transform: scale(1);
-     box-shadow : 0 0 10px 3px grey  
+    from {
+        transform: scale(1);
+        box-shadow: 0 0 10px 3px grey
     }
+
     to {
         transform: scale(1.08);
         box-shadow: 0 0 22px 8px whitesmoke
     }
 }
+
 .sqr.winning-coin {
-   animation: winCoins 0.8s infinite alternate ease-in-out ; 
+    animation: winCoins 0.8s infinite alternate ease-in-out;
 }
+
 @keyframes timer-pulse {
-    from { transform: scale(1);}
-    to { transform: scale(1.05);}
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.05);
+    }
 }
+
 #timer.warning {
     background: darkred;
     border-color: red;
-    color : palevioletred ;
-    animation : timer-pulse 0.6s infinite alternate ;
+    color: palevioletred;
+    animation: timer-pulse 0.6s infinite alternate;
 }
+
 #timer.warning .time-num {
-    color : whitesmoke
+    color: whitesmoke
 }
+
 #timer .time-num {
-    font-size : 1.3rem;
+    font-size: 1.3rem;
     font-weight: bold;
-    color : goldenrod ;
+    color: goldenrod;
     min-width: 32px;
     display: inline-block;
 }
+
 #timer {
-   display: inline-flex;
-   align-items: center;
-   justify-content: center; 
-   gap : 8px ;
-   background-color: rgb(198, 118, 118);
-   backdrop-filter: blur(5px);
-   color : whitesmoke ;
-   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-   font-size: 1.1rem;
-   font-weight: 600;
-   padding: 8px 22px;
-   border-radius: 30 px;
-   border : 2px solid gray ;
-   box-shadow: 0 4px 15px black;
-   margin : 15px auto ;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: rgb(198, 118, 118);
+    backdrop-filter: blur(5px);
+    color: whitesmoke;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 8px 22px;
+    border-radius: 30 px;
+    border: 2px solid gray;
+    box-shadow: 0 4px 15px black;
+    margin: 15px auto;
 }
+
 .players-display {
     display: flex;
     justify-content: center;
@@ -153,10 +217,11 @@ button{
     font-weight: bold;
     color: #ffffff;
     transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-    opacity: 0.6; 
+    opacity: 0.6;
 }
+
 .active-player {
-    opacity: 1 ;
+    opacity: 1;
     animation: turnPulse 1s infinite alternate ease-in-out;
 }
 
@@ -175,11 +240,13 @@ button{
         transform: scale(1.05);
         box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
     }
+
     to {
-        transform: scale(1.2); 
+        transform: scale(1.2);
         box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
     }
 }
+
 .win-message {
     padding: 12px 24px;
     border-radius: 12px;
@@ -189,7 +256,7 @@ button{
     font-weight: bold;
     color: #ffffff;
     animation: turnPulse 1s infinite alternate ease-in-out;
-    opacity: 0.6; 
+    opacity: 0.6;
     align-items: center;
     text-align: center;
 }
@@ -197,7 +264,73 @@ button{
 .warning-countdown {
     background: whitesmoke;
     border-color: red;
-    color : red;
-    animation : timer-pulse 0.6s infinite alternate ;
+    color: red;
+    animation: timer-pulse 0.6s infinite alternate;
     text-align: center;
+}
+
+#welcome-screen {
+    inset: 0;
+    align-items: center;
+    font-size: larger;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: darkviolet;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    transition: opacity 0.5s;
+    background: radial-gradient(circle at top, #1f3a82, #0a1128);
+    ;
+
+}
+
+#welcome-scren.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.welcome-title {
+    font-size: 64px;
+    margin: 0 0 20px;
+    background: linear-gradient(90deg, crimson, gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.welcome-coins {
+    display: flex;
+    gap: 20px;
+}
+
+.red-coins {
+    background: radial-gradient(circle at 30% 30%, #ff6b81, crimson);
+}
+
+.yellow-coins {
+    background: radial-gradient(circle at 30% 30%, #fff3a0, gold);
+    animation-delay: 0.2s;
+    animation-fill-mode: backwards;
+}
+
+@keyframes fall {
+    from {
+        transform: translateY(-300);
+    }
+}
+
+.welcome-subtitle {
+    color: #b8c4e0;
+    font-size: 20px;
+}
+
+.start-button {
+    padding: 14px 40px;
+    font-size: 20px;
+    border-radius: 50px;
+    background: linear-gradient(90deg, crimson, orange);
+    transition: transform 0.2s;
+}
+.start-button:hover {
+transform: translateY(-3px);
 }
