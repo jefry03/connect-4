@@ -270,6 +270,8 @@ button {
 }
 
 #welcome-screen {
+    position: fixed;
+    z-index: 1000;
     inset: 0;
     align-items: center;
     font-size: larger;
@@ -284,7 +286,7 @@ button {
 
 }
 
-#welcome-scren.hidden {
+#welcome-screen.hidden {
     opacity: 0;
     pointer-events: none;
 }
@@ -298,24 +300,35 @@ button {
     color: transparent;
 }
 
-.welcome-coins {
+#welcome-coins {
     display: flex;
     gap: 20px;
 }
 
 .red-coins {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
     background: radial-gradient(circle at 30% 30%, #ff6b81, crimson);
+    animation: fall 0.8s ease-out ;
+   
 }
 
 .yellow-coins {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
     background: radial-gradient(circle at 30% 30%, #fff3a0, gold);
+    animation: fall 0.8s ease-out ;
     animation-delay: 0.2s;
     animation-fill-mode: backwards;
+    
 }
 
 @keyframes fall {
     from {
-        transform: translateY(-300);
+        transform: translateY(-300px);
+        opacity : 0 ;
     }
 }
 

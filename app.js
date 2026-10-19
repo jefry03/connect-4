@@ -7,6 +7,8 @@ const timerClock = new Audio('timer2.mp3')
 const victory = new Audio ('victory.mp3')
 const counter = new Audio ('counter.mp3')
 const  click = new Audio ('click.mp3')
+const lobby = new Audio ('fort.mp3')
+lobby.loop = true ;
 let board = [];
 let turn = 'RED';
 let winner = false;
@@ -20,6 +22,8 @@ let timerInit =null ;
 let timeStart = time ;
 let winningCoins = [];
 let gameStart = false ;
+const startGame =document.querySelector ('.start-button') ;
+const welcomeWebsite = document.querySelector('#welcome-screen') ;
 const squareEls = document.querySelectorAll('.sqr');
 const messageEl = document.querySelector('#message');
 const resetBtnEl = document.querySelector('#reset');
@@ -52,11 +56,15 @@ const winningCombos = [
     [10, 16, 22, 28], [11, 17, 23, 29], [12, 18, 24, 30], [13, 19, 25, 31],
     [17, 23, 29, 35], [18, 24, 30, 36], [19, 25, 31, 37], [20, 26, 32, 38]
 ];
+function hideWelcome () {
+    welcomeWebsite.classList.add ('hidden')
+}
 function setNamePlayer() {
     if (click) {
     click.currentTime =1 ;
     click.play();
     }
+  
     const playerOnename = playerOne ? playerOne.value.trim() : '';
     const playerTwoname = playerTwo ? playerTwo.value.trim() : '';
     if (playerOnename) players.RED = playerOnename;
@@ -313,5 +321,6 @@ if (resetBtnEl) {
 if (setName) {
     setName.addEventListener('click', setNamePlayer);
 }
-   
+ startGame.addEventListener ('click' , hideWelcome) ;
+ window.addEventListener ('click' , lobby.play() )
 init();
