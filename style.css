@@ -22,14 +22,15 @@
 }
 
 body {
-    background-color: #0f1b3d;
+    background-color: darkorchid;
     color: white;
     margin: 0;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url(background.jpg);
+     background-color  :#F6F6F6 ;
+   
 }
 
 .sqr.red::after,
@@ -206,16 +207,17 @@ button {
     align-items: center;
     gap: 25px;
     margin: 15px 0;
+    color : crimson ;
 }
 
 .player-card {
     padding: 12px 24px;
     border-radius: 12px;
     background-color: rgba(255, 255, 255, 0.08);
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    border: 2px solid hsla(202, 86%, 49%, 0.959);
     font-size: 1.2rem;
     font-weight: bold;
-    color: #ffffff;
+    color: black;
     transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
     opacity: 0.6;
 }
@@ -256,13 +258,12 @@ button {
     font-weight: bold;
     color: #ffffff;
     animation: turnPulse 1s infinite alternate ease-in-out;
-    opacity: 0.6;
     align-items: center;
     text-align: center;
 }
 
 .warning-countdown {
-    background: whitesmoke;
+    background: black;
     border-color: red;
     color: red;
     animation: timer-pulse 0.6s infinite alternate;
@@ -348,3 +349,4 @@ button {
 .start-button:hover {
 transform: translateY(-3px);
 }
+

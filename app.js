@@ -63,10 +63,7 @@ function setNamePlayer() {
     if (click) {
     click.currentTime =1 ;
     click.play();
-    if (lobby) {
-        lobby.currentTime = 0 ;
-        lobby.pause () ;
-    }
+    lobby.pause () ;
     }
   
     const playerOnename = playerOne ? playerOne.value.trim() : '';
@@ -81,7 +78,7 @@ function setNamePlayer() {
     let countDown = 3;
     if (messageEl) {
         messageEl.textContent = countDown;
-        messageEl.classList.add('warning-countdown')
+        messageEl.classList.add('players-display')
     }
 
     const countDownInterval = setInterval(() => {
@@ -156,6 +153,7 @@ function updateTime() {
 }
 
 function init() {
+    lobby.currentTime = 0 ;
     stopTimer();
     victory.currentTime = 0 ;
     victory.pause();
@@ -324,8 +322,9 @@ if (resetBtnEl) {
 }
 if (setName) {
     setName.addEventListener('click', setNamePlayer);
+    
 }
  startGame.addEventListener ('click' , hideWelcome) ;
  window.addEventListener ('click' , lobby.play() )
- lobby.currentTime = 0;
+ lobby.play () ;
 init();
