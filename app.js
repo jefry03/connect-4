@@ -63,6 +63,10 @@ function setNamePlayer() {
     if (click) {
     click.currentTime =1 ;
     click.play();
+    if (lobby) {
+        lobby.currentTime = 0 ;
+        lobby.pause () ;
+    }
     }
   
     const playerOnename = playerOne ? playerOne.value.trim() : '';
@@ -323,4 +327,5 @@ if (setName) {
 }
  startGame.addEventListener ('click' , hideWelcome) ;
  window.addEventListener ('click' , lobby.play() )
+ lobby.currentTime = 0;
 init();

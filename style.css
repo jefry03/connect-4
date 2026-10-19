@@ -310,7 +310,8 @@ button {
     height: 60px;
     border-radius: 50%;
     background: radial-gradient(circle at 30% 30%, #ff6b81, crimson);
-    animation: fall 0.8s ease-out ;
+    animation: fall 0.8s ease-out infinite ;
+    animation-delay: 1.5 ;
    
 }
 
@@ -319,8 +320,8 @@ button {
     height: 60px;
     border-radius: 50%;
     background: radial-gradient(circle at 30% 30%, #fff3a0, gold);
-    animation: fall 0.8s ease-out ;
-    animation-delay: 0.2s;
+    animation: fall 0.8s ease-out infinite ;
+    animation-delay: 1.5s;
     animation-fill-mode: backwards;
     
 }
