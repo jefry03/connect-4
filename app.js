@@ -7,8 +7,6 @@ const timerClock = new Audio('timer2.mp3')
 const victory = new Audio ('victory.mp3')
 const counter = new Audio ('counter.mp3')
 const  click = new Audio ('click.mp3')
-const lobby = new Audio ('fort.mp3')
-lobby.loop = true ;
 let board = [];
 let turn = 'RED';
 let winner = false;
@@ -63,9 +61,8 @@ function setNamePlayer() {
     if (click) {
     click.currentTime =1 ;
     click.play();
-    lobby.pause () ;
+    
     }
-  
     const playerOnename = playerOne ? playerOne.value.trim() : '';
     const playerTwoname = playerTwo ? playerTwo.value.trim() : '';
     if (playerOnename) players.RED = playerOnename;
@@ -153,7 +150,6 @@ function updateTime() {
 }
 
 function init() {
-    lobby.currentTime = 0 ;
     stopTimer();
     victory.currentTime = 0 ;
     victory.pause();
@@ -286,6 +282,8 @@ function handleClick(index) {
             victory.currentTime = 0 ;
             victory.play();
         }
+        lobby.currentTime = 0 ;
+        lobby.play();
         render();
     }
 }
@@ -325,6 +323,4 @@ if (setName) {
     
 }
  startGame.addEventListener ('click' , hideWelcome) ;
- window.addEventListener ('click' , lobby.play() )
- lobby.play () ;
-init();
+init()
