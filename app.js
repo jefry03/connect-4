@@ -282,8 +282,6 @@ function handleClick(index) {
             victory.currentTime = 0 ;
             victory.play();
         }
-        lobby.currentTime = 0 ;
-        lobby.play();
         render();
     }
 }
